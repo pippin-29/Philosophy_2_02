@@ -6,7 +6,7 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:38:35 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/12 14:45:00 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/12 15:04:40 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ int	eat(t_args *args, int address)
 		sleepbee(args->time_to_eat);
 		args->philo[address]->eat_count++;
 		return_forks(args, address);
+		if (args->philo[address]->eat_count == args->eat_goal)
+		{
+			printf("Philosopher %d has completed the goal\n", address + 1);
+			args->philo[address]->state = COMPLETE;
+			pthread_exit(args->philo[address]->tid);
+		}
 		return (1);
 	}	
 	else

@@ -6,7 +6,7 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:41:12 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/12 14:51:09 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/12 15:11:11 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@
 # include <stdbool.h>
 # include "../source/source_util/source_util.h"
 
-#define THINKING 5
-#define EATING 0
+#define COMPLETE 1
 
 typedef struct s_philo
 {
@@ -79,6 +78,7 @@ int		id_check(t_philo **philo, pthread_t thread_id);
 /// START_C ///
 void	start(t_args *args);
 void	create_threads(t_args *args);
+void	wait_for_exit(t_args *args);
 // void	supervisor_thread(t_args *args);
 
 
