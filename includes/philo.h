@@ -6,7 +6,7 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:41:12 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/12 15:11:11 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/12 16:22:20 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <pthread.h>
 # include <stdbool.h>
 # include "../source/source_util/source_util.h"
+# include "philo_macro.h"
 
 #define COMPLETE 1
 
@@ -31,14 +32,14 @@ typedef struct s_philo
 	int				state;
 	int				left;
 	int				right;
+	u64				eat_stamp;
 	pthread_mutex_t	fork;
 } t_philo;
 
 typedef struct s_program
 {
-	u64			starttime;
-	u64			timestamp;
-	pthread_t	sup_id;
+	u64				starttime;
+	pthread_mutex_t	print_mutex;
 } t_program;
 
 typedef struct s_args
@@ -81,6 +82,7 @@ void	create_threads(t_args *args);
 void	wait_for_exit(t_args *args);
 // void	supervisor_thread(t_args *args);
 
+void    print(t_args *args, int address, int type);
 
 /// TIME_C ///
 u64		get_time(void);

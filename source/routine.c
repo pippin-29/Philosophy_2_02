@@ -6,7 +6,7 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:38:35 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/12 15:04:40 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/12 16:23:10 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void *routine(void *arg)
 		exit(-1);
 	while (1)
 	{
+		if (id_please % 2)
+			sleepbee(10);
 		share(args, id_please);
 	}
 }
@@ -35,14 +37,37 @@ void share(t_args *args, int address)
 	sleepy(args, address);
 }
 
+void	check_pulse(t_args *args, int address)
+{
+	if (args->philo[address]->eat_stamp != 0)
+	{
+		if (get_time() - args->philo[address]->eat_stamp > args->time_to_die)
+			{
+				printf("Philosopher %d can no longer eat...\n", address + 1);
+				exit(0);
+			}
+	}
+	else
+	{
+		if (get_time() - args->program->starttime > args->time_to_die)
+			{
+				printf("Philosopher %d can no longer eat...\n", address + 1);
+				exit(0);
+			}
+	}
+		
+}
+
 int	eat(t_args *args, int address)
 {
+	check_pulse(args, address);
 	if (forks_acquired(args, address))
 	{
-		printf("Philosopher %d is eating\n", address + 1);
+		print(args, address, EATING);
 		sleepbee(args->time_to_eat);
 		args->philo[address]->eat_count++;
-		return_forks(args, address);
+		args->philo[address]->eat_stamp = get_time();
+		
 		if (args->philo[address]->eat_count == args->eat_goal)
 		{
 			printf("Philosopher %d has completed the goal\n", address + 1);
@@ -63,8 +88,10 @@ void	return_forks(t_args *args, int address)
 
 	left = args->philo[address]->left;
 	right = args->philo[address]->right;
-	pthread_mutex_unlock(&args->philo[left]->fork);
-	pthread_mutex_unlock(&args->philo[right]->fork);
+	if (pthread_mutex_unlock(&args->philo[left]->fork) == 0)
+		print(args, address, FORK_RETURNED);
+	if (pthread_mutex_unlock(&args->philo[right]->fork) == 0) 
+		print(args, address, FORK_RETURNED);
 
 }
 
@@ -82,7 +109,7 @@ int	forks_acquired(t_args *args, int address)
 		if (pthread_mutex_trylock(&args->philo[i]->fork))
 		{
 			fork_count++;
-			printf("Philosopher %d has taken fork %d\n", address + 1, fork_count);
+			print(args, address, FORK_PICKED_UP);
 			if (fork_count == 1)
 				args->philo[address]->left = i;
 			else if (fork_count == 2)

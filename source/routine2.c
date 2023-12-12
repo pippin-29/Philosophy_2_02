@@ -6,7 +6,7 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:02:14 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/12 14:50:48 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/12 16:18:09 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void sleepy(t_args *args, int address)
 {
-	printf("Philosopher %d is sleeping\n", address + 1);
+	return_forks(args, address);
+	print(args, address, SLEEPING);
 	sleepbee(args->time_to_sleep);
-	printf("Philosopher %d is coding\n", address + 1);
+	print(args, address, CODING);
 }
 
 int	id_check(t_philo **philo, pthread_t thread_id)

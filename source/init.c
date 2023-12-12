@@ -6,7 +6,7 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:55:10 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/12 14:48:41 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/12 16:20:04 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ void	init_program(t_args *args)
 {
 	args->program = malloc(sizeof(t_program));
 	args->program->starttime = get_time();
-	args->program->timestamp = 0;
-	args->program->sup_id = NULL;
 }
 
 void	init_philos(t_args *args)
@@ -78,6 +76,7 @@ void	init_philos(t_args *args)
 		args->philo[i]->left = -1;
 		args->philo[i]->right = -1;
 		args->philo[i]->eat_count = 0;
+		args->philo[i]->eat_stamp = 0;
 		pthread_mutex_init(&args->philo[i]->fork, NULL);
 		i++;
 	}
