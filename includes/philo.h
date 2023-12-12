@@ -6,7 +6,7 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:41:12 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/12 16:22:20 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/13 09:15:15 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 # include <sys/time.h>
 # include <pthread.h>
 # include <stdbool.h>
-# include "../source/source_util/source_util.h"
 # include "philo_macro.h"
 
-#define COMPLETE 1
+# define COMPLETE 1
 
+typedef unsigned long long	t_u64;
 typedef struct s_philo
 {
 	pthread_t		tid;
@@ -32,15 +32,14 @@ typedef struct s_philo
 	int				state;
 	int				left;
 	int				right;
-	u64				eat_stamp;
+	t_u64			eat_stamp;
 	pthread_mutex_t	fork;
-} t_philo;
+}	t_philo;
 
 typedef struct s_program
 {
-	u64				starttime;
-	pthread_mutex_t	print_mutex;
-} t_program;
+	t_u64			starttime;
+}	t_program;
 
 typedef struct s_args
 {
@@ -51,10 +50,13 @@ typedef struct s_args
 	int			eat_goal;
 	t_philo		**philo;
 	t_program	*program;
-} t_args;
+}	t_args;
+
+/// ASCII_TO_INT_C ///
+int		ascii_2_int(char *str);
 
 /// ERROR_C ///
-int	error_message(void);
+int		error_message(void);
 
 /// INIT_C ///
 int		digit(char c);
@@ -63,33 +65,27 @@ void	init(t_args *args, char **argv);
 void	init_program(t_args *args);
 void	init_philos(t_args *args);
 
+/// PRINT_C ///
+void	print(t_args *args, int address, int type);
+
 /// ROUTINE_C ///
 void	*routine(void *arg);
 void	share(t_args *args, int address);
 int		eat(t_args *args, int address);
 void	return_forks(t_args *args, int address);
-int		forks_acquired(t_args *args, int address);
 
 /// ROUTINE2_C ///
 void	sleepy(t_args *args, int address);
 int		id_check(t_philo **philo, pthread_t thread_id);
-// void	*supervisor_routine(void *arg);
-// void	check_eat_goal(t_args *args);
+int		forks_acquired(t_args *args, int address);
 
 /// START_C ///
 void	start(t_args *args);
 void	create_threads(t_args *args);
 void	wait_for_exit(t_args *args);
-// void	supervisor_thread(t_args *args);
-
-void    print(t_args *args, int address, int type);
 
 /// TIME_C ///
-u64		get_time(void);
+t_u64	get_time(void);
 void	sleepbee(int milliseconds);
-
-
-
-
 
 #endif

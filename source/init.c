@@ -6,7 +6,7 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:55:10 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/12 16:20:04 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/13 09:11:47 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	init_program(t_args *args)
 
 void	init_philos(t_args *args)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	args->philo = malloc(sizeof(t_philo *) * (args->philo_num + 1));

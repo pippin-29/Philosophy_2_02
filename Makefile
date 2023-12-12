@@ -4,9 +4,7 @@ ADDSAN				:= -g -fsanitize=address
 
 SOURCE				:= source/*.c
 
-SOURCE_UTIL			:= source/source_util/*.c
-
-COMPILE				:= gcc -o $(NAME) $(SOURCE) $(SOURCE_UTIL) $(ADDSAN)
+COMPILE				:= gcc -o $(NAME) $(SOURCE) $(ADDSAN)
 
 all:
 					$(COMPILE)
@@ -28,7 +26,7 @@ test4: all
 					./philo 4 410 200 200
 
 test5: all
-					echo One philosopher should die.
+					echo One philosopher should die?.
 					./philo 4 310 200 100
 
 clean: fclean

@@ -6,11 +6,11 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 11:31:35 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/12 11:58:26 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/13 09:15:43 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "source_util.h"
+#include "../includes/philo.h"
 
 int	ascii_2_int(char *str)
 {

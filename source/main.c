@@ -6,13 +6,13 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:40:30 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/12 12:26:58 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/13 09:11:22 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	main (int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_args	*args;
 
