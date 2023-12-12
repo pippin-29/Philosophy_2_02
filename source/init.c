@@ -6,7 +6,7 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:55:10 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/12 12:25:47 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/12 13:50:46 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ void	init_philos(t_args *args)
 		args->philo[i] = malloc(sizeof(t_philo));
 		args->philo[i]->iid = i;
 		args->philo[i]->tid = NULL;
+		args->philo[i]->left = -1;
+		args->philo[i]->right = -1;
 		args->philo[i]->eat_count = 0;
 		pthread_mutex_init(&args->philo[i]->fork, NULL);
 		i++;
