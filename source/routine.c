@@ -6,7 +6,7 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:38:35 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/12 14:12:19 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/12 14:45:00 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,9 @@ void	return_forks(t_args *args, int address)
 
 	left = args->philo[address]->left;
 	right = args->philo[address]->right;
-	if (pthread_mutex_unlock(&args->philo[left]->fork) == 0)
-		printf("Philosopher %d has returned left fork\n", address + 1);
-	if (pthread_mutex_unlock(&args->philo[right]->fork) == 0)
-		printf("Philosopher %d has returned right fork\n", address + 1);
-	
+	pthread_mutex_unlock(&args->philo[left]->fork);
+	pthread_mutex_unlock(&args->philo[right]->fork);
+
 }
 
 int	forks_acquired(t_args *args, int address)

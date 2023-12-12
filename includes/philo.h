@@ -6,7 +6,7 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:41:12 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/12 14:02:59 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/12 14:51:09 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,14 @@ int		forks_acquired(t_args *args, int address);
 /// ROUTINE2_C ///
 void	sleepy(t_args *args, int address);
 int		id_check(t_philo **philo, pthread_t thread_id);
+// void	*supervisor_routine(void *arg);
+// void	check_eat_goal(t_args *args);
 
 /// START_C ///
 void	start(t_args *args);
 void	create_threads(t_args *args);
 // void	supervisor_thread(t_args *args);
+
 
 /// TIME_C ///
 u64		get_time(void);
