@@ -19,23 +19,23 @@ COMPILE				:= gcc -o $(NAME) $(SOURCE)
 all:
 					$(COMPILE)
 
-test1: all
+test1:
 					echo The philosopher should not eat and should die.
 					./philo 1 800 200 200
 					
-test2: all
+test2:
 					echo No philosopher should die.
 					./philo 5 800 200 200
 
-test3: all
+test3:
 					echo No philosopher should die and the simulation should stop when every philosopher has eaten at least 7 times.
 					./philo 5 800 200 200 7
 
-test4: all
+test4:
 					echo No philosopher should die.
 					./philo 4 410 200 200
 
-test5: all
+test5:
 					echo One philosopher should die?.
 					./philo 4 310 200 100
 

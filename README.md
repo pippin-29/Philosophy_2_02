@@ -10,4 +10,8 @@ So in the case of 5 diners, two may eat at any one moment.
 
 From the moment they start eating, a timer starts, specified within the call to the program as a parameter.
 
-If they do not acquire 2 forks ... still more to come
+Busy-wait timers are in use for precision.
+
+There are 5 tests available.
+
+Navigate to project root, type `` make ``, type `` make test1 ``
