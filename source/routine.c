@@ -6,7 +6,7 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:38:35 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/13 09:16:46 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/13 13:50:13 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	check_pulse(t_args *args, int address)
 			exit(0);
 		}
 	}
+	args->philo[address]->eat_stamp = get_time();
 }
 
 int	eat(t_args *args, int address)
@@ -71,7 +72,6 @@ int	eat(t_args *args, int address)
 		print(args, address, EATING);
 		sleepbee(args->time_to_eat);
 		args->philo[address]->eat_count++;
-		args->philo[address]->eat_stamp = get_time();
 		return_forks(args, address);
 		if (args->philo[address]->eat_count == args->eat_goal)
 		{
