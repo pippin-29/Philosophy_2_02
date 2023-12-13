@@ -6,7 +6,7 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:09:59 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/13 09:06:16 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/13 15:07:06 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	create_threads(t_args *args)
 			printf("Failed To Create Thread For Philosopher %d\n",
 				args->philo[i]->iid + 1);
 		i++;
-		sleepbee ((rand() % 3 + 1) * 10);
+		sleepbee(rand() % 3 + 1);
 	}
 }
 

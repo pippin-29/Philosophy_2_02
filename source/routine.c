@@ -6,7 +6,7 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:38:35 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/13 09:16:46 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/14 08:01:34 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,7 @@ void	*routine(void *arg)
 	if (id_please == -1)
 		exit(-1);
 	while (1)
-	{
-		if (id_please % 2)
-			sleepbee(10);
 		share(args, id_please);
-	}
 }
 
 void	share(t_args *args, int address)
@@ -42,25 +38,16 @@ void	check_pulse(t_args *args, int address)
 	if (args->philo_num == 1)
 	{
 		sleepbee(args->time_to_die);
-		printf("Philosopher %d can no longer eat...\n", address + 1);
-		exit(0);
+		print(args, address, DIED, NULL);
 	}
 	if (args->philo[address]->eat_stamp != 0)
 	{
 		if (get_time() - args->philo[address]->eat_stamp > args->time_to_die)
-		{
-			printf("Philosopher %d can no longer eat...\n", address + 1);
-			exit(0);
-		}
+			print(args, address, DIED, NULL);
 	}
 	else
-	{
 		if (get_time() - args->program->starttime > args->time_to_die)
-		{
-			printf("Philosopher %d can no longer eat...\n", address + 1);
-			exit(0);
-		}
-	}
+			print(args, address, DIED, NULL);
 }
 
 int	eat(t_args *args, int address)
@@ -68,14 +55,14 @@ int	eat(t_args *args, int address)
 	check_pulse(args, address);
 	if (forks_acquired(args, address))
 	{
-		print(args, address, EATING);
+		print(args, address, EATING, NULL);
+		args->philo[address]->eat_stamp = get_time();
 		sleepbee(args->time_to_eat);
 		args->philo[address]->eat_count++;
-		args->philo[address]->eat_stamp = get_time();
 		return_forks(args, address);
 		if (args->philo[address]->eat_count == args->eat_goal)
 		{
-			printf("Philosopher %d has completed the goal\n", address + 1);
+			print(args, address, COMPLETE, NULL);
 			args->philo[address]->state = COMPLETE;
 			pthread_exit(args->philo[address]->tid);
 		}
@@ -93,7 +80,7 @@ void	return_forks(t_args *args, int address)
 	left = args->philo[address]->left;
 	right = args->philo[address]->right;
 	if (pthread_mutex_unlock(&args->philo[left]->fork) == 0)
-		print(args, address, FORK_RETURNED);
+		print(args, address, FORK_RETURNED, &left);
 	if (pthread_mutex_unlock(&args->philo[right]->fork) == 0)
-		print(args, address, FORK_RETURNED);
+		print(args, address, FORK_RETURNED, &right);
 }

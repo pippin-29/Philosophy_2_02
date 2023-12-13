@@ -6,7 +6,7 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:41:12 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/13 09:15:15 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/14 08:03:32 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 # include <stdbool.h>
 # include "philo_macro.h"
 
-# define COMPLETE 1
+# define COMPLETE 5
+# define DIED     7
 
 typedef unsigned long long	t_u64;
 typedef struct s_philo
@@ -39,6 +40,7 @@ typedef struct s_philo
 typedef struct s_program
 {
 	t_u64			starttime;
+	pthread_mutex_t	print_mutex;
 }	t_program;
 
 typedef struct s_args
@@ -66,7 +68,16 @@ void	init_program(t_args *args);
 void	init_philos(t_args *args);
 
 /// PRINT_C ///
-void	print(t_args *args, int address, int type);
+void	print(t_args *args, int address, int type, int *fork);
+void	print_sleeping(t_args *args, int address);
+void	print_eating(t_args *args, int address);
+void	print_coding(t_args *args, int address);
+
+/// PRINT2_C ///
+void	print_fork_picked_up(t_args *args, int address, int *fork);
+void	print_fork_returned(t_args *args, int address, int *fork);
+void	print_died(t_args *args, int address);
+void	print_complete(t_args *args, int address);
 
 /// ROUTINE_C ///
 void	*routine(void *arg);

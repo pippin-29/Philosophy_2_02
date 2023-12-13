@@ -6,7 +6,7 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:55:10 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/13 09:11:47 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/13 14:11:00 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	init_program(t_args *args)
 {
 	args->program = malloc(sizeof(t_program));
 	args->program->starttime = get_time();
+	pthread_mutex_init(&args->program->print_mutex, NULL);
 }
 
 void	init_philos(t_args *args)
