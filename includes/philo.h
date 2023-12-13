@@ -6,7 +6,7 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:41:12 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/13 09:15:15 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/13 14:25:18 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 # include <stdbool.h>
 # include "philo_macro.h"
 
-# define COMPLETE 1
+# define COMPLETE 5
+# define DIED     7
 
 typedef unsigned long long	t_u64;
 typedef struct s_philo
@@ -39,6 +40,7 @@ typedef struct s_philo
 typedef struct s_program
 {
 	t_u64			starttime;
+	pthread_mutex_t	print_mutex;
 }	t_program;
 
 typedef struct s_args

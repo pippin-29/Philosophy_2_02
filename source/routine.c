@@ -6,7 +6,7 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:38:35 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/13 13:50:13 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/13 14:25:06 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	*routine(void *arg)
 		exit(-1);
 	while (1)
 	{
-		if (id_please % 2)
-			sleepbee(10);
+		// if (id_please % 2)
+		// 	sleepbee(1);
 		share(args, id_please);
 	}
 }
@@ -48,18 +48,12 @@ void	check_pulse(t_args *args, int address)
 	if (args->philo[address]->eat_stamp != 0)
 	{
 		if (get_time() - args->philo[address]->eat_stamp > args->time_to_die)
-		{
-			printf("Philosopher %d can no longer eat...\n", address + 1);
-			exit(0);
-		}
+			print(args, address, DIED);
 	}
 	else
 	{
 		if (get_time() - args->program->starttime > args->time_to_die)
-		{
-			printf("Philosopher %d can no longer eat...\n", address + 1);
-			exit(0);
-		}
+			print(args, address, DIED);
 	}
 	args->philo[address]->eat_stamp = get_time();
 }
@@ -75,7 +69,7 @@ int	eat(t_args *args, int address)
 		return_forks(args, address);
 		if (args->philo[address]->eat_count == args->eat_goal)
 		{
-			printf("Philosopher %d has completed the goal\n", address + 1);
+			print(args, address, COMPLETE);
 			args->philo[address]->state = COMPLETE;
 			pthread_exit(args->philo[address]->tid);
 		}
