@@ -6,7 +6,7 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 16:06:21 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/13 14:26:20 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/13 14:29:57 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	print(t_args *args, int address, int type)
 {
 	t_u64	stamp;
+
 	pthread_mutex_lock(&args->program->print_mutex);
-	
 	stamp = get_time() - args->program->starttime;
 	if (EATING == type)
 		printf("%lld - %d is eating\n", stamp, address + 1);

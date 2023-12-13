@@ -6,7 +6,7 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:38:35 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/13 14:25:06 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/13 14:29:20 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,7 @@ void	*routine(void *arg)
 	if (id_please == -1)
 		exit(-1);
 	while (1)
-	{
-		// if (id_please % 2)
-		// 	sleepbee(1);
 		share(args, id_please);
-	}
 }
 
 void	share(t_args *args, int address)
