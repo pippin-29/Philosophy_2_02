@@ -6,7 +6,7 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 07:56:21 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/14 08:05:03 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/14 08:22:45 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	print_died(t_args *args, int address)
 	stamp = get_time() - args->program->starttime;
 	printf("\e[0;32mTIMESTAMP: %10lld - ", stamp);
 	printf("\e[1;37mPsycho Number %d has died.\n\e[0;m", address + 1);
+	exit(1);
 }
 
 void	print_complete(t_args *args, int address)

@@ -6,7 +6,7 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:41:12 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/14 08:12:18 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/14 08:58:37 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,6 @@ void	wait_for_exit(t_args *args);
 
 /// TIME_C ///
 t_u64	get_time(void);
-void	sleepbee(int milliseconds);
+void	sleepbee(useconds_t time);
 
 #endif

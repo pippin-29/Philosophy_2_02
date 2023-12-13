@@ -6,7 +6,7 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:38:35 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/14 08:12:05 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/14 09:20:25 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,6 @@ void	share(t_args *args, int address)
 
 void	check_pulse(t_args *args, int address)
 {
-	if (args->philo_num == 1)
-	{
-		sleepbee(args->time_to_die);
-		print(args, address, DIED, NULL);
-	}
 	if (args->philo[address]->eat_stamp != 0)
 	{
 		if (get_time() - args->philo[address]->eat_stamp > args->time_to_die)
@@ -52,12 +47,17 @@ void	check_pulse(t_args *args, int address)
 
 int	eat(t_args *args, int address)
 {
-	check_pulse(args, address);
+	if (args->philo_num == 1)
+	{
+		sleepbee(args->time_to_die);
+		print(args, address, DIED, NULL);
+	}
 	if (forks_acquired(args, address))
 	{
+		check_pulse(args, address);
 		print(args, address, EATING, NULL);
-		args->philo[address]->eat_stamp = get_time();
 		sleepbee(args->time_to_eat);
+		args->philo[address]->eat_stamp = get_time();
 		args->philo[address]->eat_count++;
 		return_forks(args, address);
 		if (args->philo[address]->eat_count == args->eat_goal)

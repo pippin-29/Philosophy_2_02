@@ -2,9 +2,19 @@ NAME				:= philo
 
 ADDSAN				:= -g -fsanitize=address
 
-SOURCE				:= source/*.c
+SOURCE				:= 	\
+						source/ascii_to_int.c \
+						source/error.c \
+						source/init.c \
+						source/main.c \
+						source/print.c \
+						source/print2.c \
+						source/routine.c \
+						source/routine2.c \
+						source/start.c \
+						source/time.c
 
-COMPILE				:= gcc -o $(NAME) $(SOURCE) $(ADDSAN)
+COMPILE				:= gcc -o $(NAME) $(SOURCE)
 
 all:
 					$(COMPILE)
