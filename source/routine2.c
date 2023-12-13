@@ -6,7 +6,7 @@
 /*   By: dhadding <operas.referee.0e@icloud.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:02:14 by dhadding          #+#    #+#             */
-/*   Updated: 2023/12/14 08:57:30 by dhadding         ###   ########.fr       */
+/*   Updated: 2023/12/14 09:46:44 by dhadding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	forks_acquired(t_args *args, int address)
 {
 	int	i;
 	int	fork_count;
-
+ 
 	i = 0;
 	fork_count = 0;
 	while (1)
