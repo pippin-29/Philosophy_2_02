@@ -12,6 +12,20 @@ From the moment they start eating, a timer starts, specified within the call to 
 
 Busy-wait timers are in use for precision.
 
-There are 5 tests available.
+There are 5 tests this program has been tested for.
 
-Navigate to project root, type `` make ``, type `` make test1 ``
+Test Parameters - (thread_count, time_to_die, time_to_eat, time_to_sleep, number_of_meals)
+
+Navigate to project root, type `` make ``
+
+run `` ./philo 1 800 200 200 `` One Philossopher Has Only One Fork, and will timeout.
+
+run `` ./philo 5 800 200 200 ``
+
+run `` ./philo 5 800 200 200 7 ``
+
+run `` ./philo 4 410 200 200 ``
+
+run `` ./philo 4 310 200 100 `` Test should finish with a thread timeout.
+
+Task is resource intensive, and failure will occur with memory constraints.
