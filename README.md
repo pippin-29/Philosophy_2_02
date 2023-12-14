@@ -1,8 +1,10 @@
 # Dining Philosophers Problem
 
-All philosophers are treated as indivdual threads. And have one fork.
+All philosophers are treated as individual threads. And have one fork.
 
 Each thread can access any fork as long as it is not in use. (facilitated with the use of one mutex per fork.)
+
+Two forks are required to eat.
 
 Threads can not signal between each other.
 
@@ -22,7 +24,7 @@ run `` ./philo 1 800 200 200 `` One Philosopher Has Only One Fork, and will time
 
 run `` ./philo 5 800 200 200 ``
 
-run `` ./philo 5 800 200 200 7 ``
+run `` ./philo 5 800 200 200 7 `` Each Philosopher will eat 7 times.
 
 run `` ./philo 4 410 200 200 ``
 
