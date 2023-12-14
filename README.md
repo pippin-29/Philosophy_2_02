@@ -18,7 +18,7 @@ Test Parameters - (thread_count, time_to_die, time_to_eat, time_to_sleep, number
 
 Navigate to project root, type `` make ``
 
-run `` ./philo 1 800 200 200 `` One Philossopher Has Only One Fork, and will timeout.
+run `` ./philo 1 800 200 200 `` One Philosopher Has Only One Fork, and will timeout.
 
 run `` ./philo 5 800 200 200 ``
 
